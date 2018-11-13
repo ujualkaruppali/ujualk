@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center" style="background:orangered">
+            <h2>Kannur University</h2>
+            <h4>Mark List</h4>
+        </div>
+        <form method="POST" action="/Flask">
+        <div class="col-6" style="margin:auto;padding:10px;background:grey">
+            <div class="form" style="margin: auto">
+                <div class="row">
+                    <div class="col-sm-6">Name</div>
+                    <div class="col-sm-6"><input type="text" id="name" class="form-control" name=name/></div>
+                </div><br>
+                <div class="row">
+                    <div class="col-sm-6">Reg.No</div>
+                    <div class="col-sm-6"><input type="text" id="regno" class="form-control" name=regno/></div>
+                </div><br>
+                <div class="row">
+                    <div class="col-sm-6">Semester</div>
+                    <div class="col-sm-6">
+                        <select id="semester">
+                            <option>--select--</option>
+                            <option value="Semester 1">Semester 1</option>
+                            <option value="Semester 2">Semester 2</option>
+                            <option value="Semester 3">Semester 3</option>
+                            <option value="Semester 4">Semester 4</option>
+                            <option value="Semester 5">Semester 5</option>
+                            <option value="Semester 6">Semester 6</option>
+                           
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-sm-6">College</div>
+                    <div class="col-sm-6"><input type="text" id="college" class="form-control"/></div>
+                </div><br>
+                <div>
+                    <table class="table-bordered text-center" style="margin:auto">
+                        <thead class="thead-dark" style="background:yellowgreen;color:white">
+                            <tr class="table">
+                                <th>Subject</th>
+                                <th>Mark Obtained</th>
+                                <th>Total Mark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" id="subject1" class="form-control"></td>
+                                <td><input type="number" id="mark1" class="form-control"></td>
+                                <td><input type="number" id="totalmark1" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="subject2" class="form-control"></td>
+                                <td><input type="number" id="mark2" class="form-control"></td>
+                                <td><input type="number" id="totalmark2" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="subject3" class="form-control"></td>
+                                <td><input type="number" id="mark3" class="form-control"></td>
+                                <td><input type="number" id="totalmark3" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="subject4" class="form-control"></td>
+                                <td><input type="number" id="mark4" class="form-control"></td>
+                                <td><input type="number" id="totalmark4" class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table><br>
+                </div>
+                <div class="row"><button style="margin:auto" class="btn btn-danger" onclick="generate();">Generate Marklist</button></div>
+                <br>
+                
+            </div><br>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="margin: auto;background:blue"><p id="panelHead"></p></div>
+                <div class="panel-body">
+                    <div class="row">
+                       
+                        <div class="col-sm-3"><p><label id="nmTag"></label><label id="sname"></label></p></div><!--name label-->
+                        <div class="col-sm-3"><p></p></div>
+                        <div class="col-sm-3"><p></p></div>
+                        <div class="col-sm-3"><p><label id="rgTag"></label><label id="sregno"></label></p></div><!--reg no label-->
+                        
+                        
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-sm-3"><p><label id="semTag"></label><label id="ssem"></label></p></div><!--sem label-->
+                        <div class="col-sm-3"><p></p></div><!--sem-->
+                        <div class="col-sm-3"><p></p></div><!--college label-->
+                        <div class="col-sm-3"><p><label id="collegeTag"></label><label id="scollege"></label></p></div><!--college-->
+                       
+                    </div>
+                    <div class="row">
+                        <table class="table" id="marktable"></table>
+                    </div><br>
+                </div>
+                <div class="panel-footer">
+                        <p id="status"></p>
+                </div>
+            </div>
+
+           
+           </form> 
+            
+            
+        </div>
+    </div>
+</body>
+</html>
